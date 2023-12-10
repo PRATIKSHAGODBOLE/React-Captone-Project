@@ -1,0 +1,8 @@
+1. npm i react-router-dom
+2. <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alkatra&family=Poppins&family=Prompt:ital,wght@0,300;0,500;1,300&family=Roboto+Mono&family=Roboto:ital@0;1&display=swap" rel="stylesheet">
+Add this link on public folder index.html. 
+
+3. index.css
+ font-family: Poppins
