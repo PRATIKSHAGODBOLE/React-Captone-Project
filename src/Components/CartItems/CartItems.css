@@ -73,17 +73,21 @@
     font-weight: 500;
 }
 
-.cartitems-promocode p{
+.cartitems-promocode h1{
     color : #555;
 
 }
 
-.cartitems-promobox{
-    width: 504px;
+.promobox .cartitems-promobox{
+    width: 350px;
     margin-top: 15px;
     padding-left: 20px;
-    height: 58px;
+    height: 48px;
     background: #eaeaea;
+    border-radius: 30px;
+    border: none;
+    margin-bottom: 10px;
+    font-size: 20px;
 
 }
 
@@ -94,12 +98,18 @@
     font-size: 16px;
     width: 330px;
     height: 50px;
+    color: black;
+
 }
-cartitems-promobox button{
-    width: 170px;
-    height : 58px;
+.promobox button{
+    width: 190px;
+    height : 49px;
     font-size: 16px;
-    background: black;
-    color : white;
+    background : #ff5a5a;
     cursor: pointer;
+    border-radius: 50px;
+    outline: none;
+    color: white;
+    border: none;
+
 }
