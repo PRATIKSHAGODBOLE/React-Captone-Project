@@ -1,10 +1,25 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import './CartItems.css';
 import { ShopContext } from '../../Context/ShopContext';
 import remove_icon from '../Assets/cart_cross_icon.png';
 
 export const CartItems = () => {
   const { getTotalCartAmount, all_product, cartItems, removeFromCart, addToCart } = useContext(ShopContext);
+  const [orderDetails, setOrderDetails] = useState({
+    phone: '',
+    firstName: '',
+    lastName: '',
+    address: '',
+    email: '',
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setOrderDetails((prevDetails) => ({
+      ...prevDetails,
+      [name]: value,
+    }));
+  };
 
   const handleDecrease = (itemId) => {
     removeFromCart(itemId);
@@ -12,6 +27,17 @@ export const CartItems = () => {
 
   const handleIncrease = (itemId) => {
     addToCart(itemId);
+  };
+
+  const handleBuyNow = () => {
+    // Check if any field is blank
+    if (!orderDetails.phone || !orderDetails.firstName || !orderDetails.lastName || !orderDetails.address || !orderDetails.email) {
+      alert('Please fill in all the fields.');
+    } else {
+      // All fields are filled, show the success message
+      alert('Your order confirmed successfully!');
+      window.location.href = '/';
+    }
   };
 
   return (
@@ -84,15 +110,49 @@ export const CartItems = () => {
           <div className="cartitems-promocode">
             <h1>Place Your Order</h1>
 
-            <div  className='promobox'>
-              <input className="cartitems-promobox" type="number" placeholder="Phone" />
-              <input  className="cartitems-promobox" type="text" placeholder="First Name" />
-              <input className="cartitems-promobox"  type="text" placeholder="Last Name" />
-              <input className="cartitems-promobox"  type="text" placeholder="Address" />
-              <input className="cartitems-promobox"  type="email" placeholder="Email" />
-              <button>BUY NOW</button>
+            <div className='promobox'>
+              <input
+                name="phone"
+                className="cartitems-promobox"
+                type="number"
+                placeholder="Phone"
+                value={orderDetails.phone}
+                onChange={handleInputChange}
+              />
+              <input
+                name="firstName"
+                className="cartitems-promobox"
+                type="text"
+                placeholder="First Name"
+                value={orderDetails.firstName}
+                onChange={handleInputChange}
+              />
+              <input
+                name="lastName"
+                className="cartitems-promobox"
+                type="text"
+                placeholder="Last Name"
+                value={orderDetails.lastName}
+                onChange={handleInputChange}
+              />
+              <input
+                name="address"
+                className="cartitems-promobox"
+                type="text"
+                placeholder="Address"
+                value={orderDetails.address}
+                onChange={handleInputChange}
+              />
+              <input
+                name="email"
+                className="cartitems-promobox"
+                type="email"
+                placeholder="Email"
+                value={orderDetails.email}
+                onChange={handleInputChange}
+              />
+              <button onClick={handleBuyNow}>BUY NOW</button>
             </div>
-
           </div>
         </div>
       </div>
